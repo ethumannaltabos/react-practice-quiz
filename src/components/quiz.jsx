@@ -1,31 +1,26 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Results from "./results";
+import axios from "axios";
 
 function Quiz() {
-    const questionBank = [
-        {
-            question: "What is the capital of Ohio?",
-            options: ["Cincinnati", "New York", "Columbus", "Cleveland"],
-            answer: "Columbus",
-        },
-        {
-            question: "How many states are in the US?",
-            options: ["13", "50", "100", "1"],
-            answer: "50",
-        },
-        {
-            question: "What is 8 divided by 2?",
-            options: ["8", "2", "10", "4"],
-            answer: "4",
-        },
-    ]
 
-    const initialAnswers = [null, null, null]
-    const [userAnswers, setUserAnswers] = useState(initialAnswers)
+    const [questionBank, setQuestionBank] = useState([])
+    const [userAnswers, setUserAnswers] = useState([])
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const selectedAnswer = userAnswers[currentQuestion]
     const [isQuizFinished, setIsQuizFinished] = useState(false)
+
+    useEffect(() => {
+        axios.get("/questions.json")
+            .then((response) => {
+                setQuestionBank(response.data)
+                setUserAnswers(new Array(response.data.length).fill(null))
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }, [])
 
     function handleSelectOption(option) {
         const newUserAnswers = [...userAnswers]
@@ -48,9 +43,13 @@ function Quiz() {
     }
 
     function restartQuiz() {
-        setUserAnswers(initialAnswers)
+        setUserAnswers(new Array(questionBank.length).fill(null))
         setCurrentQuestion(0)
         setIsQuizFinished(false)
+    }
+
+    if (questionBank.length === 0) {
+        return <p>No questions found.</p>
     }
 
     if (isQuizFinished) {
@@ -69,7 +68,13 @@ function Quiz() {
             <p className="question"> {questionBank[currentQuestion].question} </p>
 
             {questionBank[currentQuestion].options.map((option) => (
-                <button className={"option" + (selectedAnswer == option ? " selected" : "")} onClick={() => handleSelectOption(option)}> {option} </button>
+                <button
+                    key={option}
+                    className={"option" + (selectedAnswer == option ? " selected" : "")}
+                    onClick={() => handleSelectOption(option)}
+                >
+                    {option}
+                </button>
             ))}
 
             <div className="nav-buttons">
