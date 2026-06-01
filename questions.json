@@ -1,0 +1,17 @@
+[
+  {
+    "question": "What is Ella's middle name?",
+    "options": ["Elizabeth", "Mary", "Elise", "Bob"],
+    "answer": "Elise"
+  },
+  {
+    "question": "What is Ella's favorite color?",
+    "options": ["Pink", "Green", "Purple", "Blue"],
+    "answer": "Green"
+  },
+  {
+    "question": "Who is Ella's Favorite singer?",
+    "options": ["Taylor Swift", "Bruno Mars", "Jon Pardi", "Noah Kahan"],
+    "answer": "Noah Kahan"
+  }
+]
