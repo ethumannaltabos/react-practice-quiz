@@ -1,17 +1,17 @@
 [
   {
-    "question": "What is the capital of Ohio?",
-    "options": ["Cincinnati", "New York", "Columbus", "Cleveland"],
-    "answer": "Columbus"
+    "question": "What is Ella's middle name?",
+    "options": ["Elizabeth", "Mary", "Elise", "Bob"],
+    "answer": "Elise"
   },
   {
-    "question": "How many states are in the US?",
-    "options": ["13", "50", "100", "1"],
-    "answer": "50"
+    "question": "What is Ella's favorite color?",
+    "options": ["Pink", "Green", "Purple", "Blue"],
+    "answer": "Green"
   },
   {
-    "question": "What is 8 divided by 2?",
-    "options": ["8", "2", "10", "4"],
-    "answer": "4"
+    "question": "Who is Ella's Favorite singer?",
+    "options": ["Taylor Swift", "Bruno Mars", "Jon Pardi", "Noah Kahan"],
+    "answer": "Noah Kahan"
   }
 ]

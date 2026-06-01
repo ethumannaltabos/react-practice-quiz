@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Results from "./results";
 import axios from "axios";
 
-function Quiz() {
+function Quiz({ returnHome }) {
 
     const [questionBank, setQuestionBank] = useState([])
     const [userAnswers, setUserAnswers] = useState([])
@@ -58,6 +58,7 @@ function Quiz() {
                 userAnswers={userAnswers} 
                 questionBank={questionBank} 
                 restartQuiz={restartQuiz}
+                returnHome={returnHome}
             />
         )
     }
